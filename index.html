@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>点と点で輪になって ギャラリー</title>
+        <meta name="description" content="美少女ゲーム「点と点で輪になって」のサイトです">
+        <meta name="keywords" content="エロゲ">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/gallery.css">
+        <script src="https://unpkg.com/vue@3.0.0/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+        <link rel="shortcut icon" href="img/icon.png">
+        <meta name="format-detection" content="telephone=no">
+    </head>
+    <body>
+        <div id="app">
+            <div class="gallery">
+                <h1 class="gallery-title">GALLERY</h1>
+                <div class="gallery-container">
+                    <ul class="gallery-list" v-for="img in thumbnail" :key="img.num">
+                        <li class="gallery-list-item"><img v-model:src="img.link" v-model:alt="img.title" @click="SwitchModal(img)"></li>
+                    </ul>
+                </div>
+                <div class="gallery-modal" v-if="ModalIsOpen">
+                    <div class="gallery-modal-overlay">
+                        <div class="gallery-modal-window">
+                            <img class="gallery-modal-image" v-model:src="CurrentImage.link" alt="">
+                        </div>
+                        <span class="modal-close-btn" @click="SwitchModal">x</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="gallery.js"></script>
+    </body>
+</html>
